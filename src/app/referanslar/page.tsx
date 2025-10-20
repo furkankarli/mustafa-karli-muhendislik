@@ -1,5 +1,17 @@
 import Link from "next/link";
 import { Star } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Referanslar",
+    description: "Müşterilerimizin görüş ve deneyimleri. 30+ memnun müşteri, %98 memnuniyet oranı ile güvenilir iş ortağınız. Başarı hikayelerimizi keşfedin.",
+    keywords: ["referanslar", "müşteri görüşleri", "memnun müşteriler", "başarı hikayeleri", "müşteri deneyimleri", "proje referansları"],
+    openGraph: {
+        title: "Referanslar | Mustafa Karlı Mühendislik",
+        description: "30+ memnun müşteri, %98 memnuniyet oranı. Müşterilerimizin görüş ve deneyimlerini okuyun.",
+        url: "https://www.mustafakarlimuhendislik.com/referanslar",
+    },
+};
 
 const references = [
     {

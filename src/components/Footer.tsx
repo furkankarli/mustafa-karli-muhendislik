@@ -66,11 +66,15 @@ export default function Footer() {
                         <ul className="space-y-3">
                             <li className="flex items-start gap-2">
                                 <Phone size={18} className="text-primary mt-1 flex-shrink-0" />
-                                <span className="text-gray-400 text-sm">+90 (XXX) XXX XX XX</span>
+                                <a href="tel:+905545807794" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                                    +90 554 580 77 94
+                                </a>
                             </li>
                             <li className="flex items-start gap-2">
                                 <Mail size={18} className="text-primary mt-1 flex-shrink-0" />
-                                <span className="text-gray-400 text-sm">info@example.com</span>
+                                <a href="mailto:info@mustafakarlimuhendislik.com" className="text-gray-400 text-sm hover:text-primary transition-colors">
+                                    info@mustafakarlimuhendislik.com
+                                </a>
                             </li>
                             <li className="flex items-start gap-2">
                                 <MapPin size={18} className="text-primary mt-1 flex-shrink-0" />
@@ -87,12 +91,12 @@ export default function Footer() {
                             © {currentYear} Mustafa Karlı Mühendislik. Tüm hakları saklıdır.
                         </p>
                         <div className="flex gap-4 mt-4 md:mt-0">
-                            <a href="#" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                            <Link href="/gizlilik-politikasi" className="text-gray-400 hover:text-primary transition-colors text-sm">
                                 Gizlilik Politikası
-                            </a>
-                            <a href="#" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                            </Link>
+                            <Link href="/kullanim-sartlari" className="text-gray-400 hover:text-primary transition-colors text-sm">
                                 Kullanım Şartları
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

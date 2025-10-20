@@ -4,6 +4,9 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// NOT: Bu sayfa client component olduğu için metadata export edilemez
+// Metadata için layout.tsx'te tanımlanmış template kullanılacak
+
 export default function Contact() {
     const [formData, setFormData] = useState({
         name: "",
@@ -62,7 +65,9 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-white mb-1">Telefon</h3>
-                                        <p className="text-gray-400">+90 (XXX) XXX XX XX</p>
+                                        <a href="tel:+905545807794" className="text-gray-400 hover:text-primary transition-colors">
+                                            +90 554 580 77 94
+                                        </a>
                                     </div>
                                 </div>
 
@@ -73,7 +78,9 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-white mb-1">E-posta</h3>
-                                        <p className="text-gray-400">info@example.com</p>
+                                        <a href="mailto:info@mustafakarlimuhendislik.com" className="text-gray-400 hover:text-primary transition-colors">
+                                            info@mustafakarlimuhendislik.com
+                                        </a>
                                     </div>
                                 </div>
 

@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { Building2, Calendar, MapPin } from "lucide-react";
 
+// NOT: Bu sayfa client component olduğu için metadata export edilemez
+// Metadata için layout.tsx'te tanımlanmış template kullanılacak
+
 const projects = [
     {
         id: 1,

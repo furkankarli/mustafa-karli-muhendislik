@@ -1,6 +1,26 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Building2, Award, Users } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ana Sayfa",
+  description: "Mustafa Karlı Mühendislik - İnşaat ve mühendislik alanında 15+ yıllık deneyim. İnşaat müteahhitliği, elektrik tesisatı, mekanik tesisat, yapı denetim ve proje yönetimi hizmetleri.",
+  keywords: ["inşaat firması", "mühendislik hizmetleri", "inşaat müteahhitliği", "profesyonel mühendislik", "İstanbul inşaat", "kaliteli inşaat"],
+  openGraph: {
+    title: "Mustafa Karlı Mühendislik - İnşaat ve Mühendislik Hizmetleri",
+    description: "15+ yıllık deneyim, 50+ başarılı proje. İnşaat ve mühendislik alanında güvenilir çözüm ortağınız.",
+    url: "https://www.mustafakarlimuhendislik.com",
+    images: [
+      {
+        url: "https://www.mustafakarlimuhendislik.com/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Mustafa Karlı Mühendislik",
+      },
+    ],
+  },
+};
 
 export default function Home() {
   return (

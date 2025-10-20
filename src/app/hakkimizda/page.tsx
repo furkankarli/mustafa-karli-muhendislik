@@ -1,4 +1,16 @@
 import { CheckCircle } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Hakkımızda",
+    description: "Mustafa Karlı Mühendislik, inşaat ve mühendislik sektöründe 15+ yıllık deneyimi ile profesyonel hizmetler sunmaktadır. Deneyimli ekibimiz ve kalite garantimiz ile projelerinizde yanınızdayız.",
+    keywords: ["hakkımızda", "mustafa karlı", "mühendislik firması", "inşaat şirketi", "profesyonel ekip", "deneyimli mühendisler"],
+    openGraph: {
+        title: "Hakkımızda | Mustafa Karlı Mühendislik",
+        description: "15+ yıllık deneyim, 50+ başarılı proje, 30+ memnun müşteri. İnşaat ve mühendislik alanında güvenilir partneriniz.",
+        url: "https://www.mustafakarlimuhendislik.com/hakkimizda",
+    },
+};
 
 export default function About() {
     return (

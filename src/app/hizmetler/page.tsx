@@ -1,4 +1,16 @@
 import { Hammer, Zap, Wrench, Shield, Lightbulb, Briefcase } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Hizmetlerimiz",
+    description: "İnşaat müteahhitliği, elektrik tesisatı, mekanik tesisat, yapı denetim, danışmanlık ve proje yönetimi hizmetleri. Profesyonel çözümler için bize ulaşın.",
+    keywords: ["inşaat müteahhitliği", "elektrik tesisatı", "mekanik tesisat", "yapı denetim", "mühendislik danışmanlığı", "proje yönetimi", "enerji yönetimi"],
+    openGraph: {
+        title: "Hizmetlerimiz | Mustafa Karlı Mühendislik",
+        description: "İnşaat müteahhitliği, elektrik ve mekanik tesisat, yapı denetim, danışmanlık hizmetleri. 15+ yıllık deneyim ile yanınızdayız.",
+        url: "https://www.mustafakarlimuhendislik.com/hizmetler",
+    },
+};
 
 const services = [
     {
