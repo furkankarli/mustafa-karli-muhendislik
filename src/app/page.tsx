@@ -1,60 +1,76 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Building2, Award, Users } from "lucide-react";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Ana Sayfa",
-  description: "Mustafa Karlı Mühendislik - İnşaat ve mühendislik alanında 15+ yıllık deneyim. İnşaat müteahhitliği, elektrik tesisatı, mekanik tesisat, yapı denetim ve proje yönetimi hizmetleri.",
-  keywords: ["inşaat firması", "mühendislik hizmetleri", "inşaat müteahhitliği", "profesyonel mühendislik", "İstanbul inşaat", "kaliteli inşaat"],
-  openGraph: {
-    title: "Mustafa Karlı Mühendislik - İnşaat ve Mühendislik Hizmetleri",
-    description: "15+ yıllık deneyim, 50+ başarılı proje. İnşaat ve mühendislik alanında güvenilir çözüm ortağınız.",
-    url: "https://www.mustafakarlimuhendislik.com",
-    images: [
-      {
-        url: "https://www.mustafakarlimuhendislik.com/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Mustafa Karlı Mühendislik",
-      },
-    ],
-  },
-};
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Building2, Award, Users, ArrowRight } from "lucide-react";
+
+// NOT: Bu sayfa client component olduğu için metadata export edilemez
+// Metadata için (home)/layout.tsx'te tanımlanmış
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
-      {/* Hero Section */}
-      <section className="relative pt-36 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-black to-black opacity-50"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      {/* Hero Section - Full Screen */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <Image
+            src="/hero-construction.jpg"
+            alt="İnşaat Mühendislik"
+            fill
+            className="object-cover will-change-transform animate-kenburns"
+            priority
+            quality={85}
+          />
+        </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-              İnşaat ve Mühendislik Alanında
-              <span className="text-primary block mt-2"> Profesyonel Çözümler</span>
+        {/* Dark Overlay for text readability (lighter) */}
+        <div className="absolute inset-0 bg-black/50 z-[1]"></div>
+
+        {/* Gradient Overlay (softer) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-black/30 to-black/60 z-[2]"></div>
+
+        <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
+          {/* Slogan - Mobile-first readability */}
+          <div className="max-w-4xl animate-slide-in-left opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+            <h1
+              className="
+                text-[1.9rem] leading-[2.35rem]
+                sm:text-4xl sm:leading-[3rem]
+                md:text-5xl md:leading-[3.5rem]
+                lg:text-6xl lg:leading-[4.25rem]
+                xl:text-7xl xl:leading-[5rem]
+                font-extrabold tracking-tight text-primary text-shadow-lg
+                inline-block
+              "
+            >
+              Güvenilir Mühendislik, Kaliteli İnşaat
             </h1>
-            <p className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
-              Mustafa Karlı Mühendislik olarak, yılların deneyimi ve uzman kadromuzla
-              sizin projelerinizi en yüksek kalitede gerçekleştiriyoruz.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/iletisim">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-semibold">
-                  Bize Ulaşın <ArrowRight className="ml-2" size={20} />
-                </Button>
-              </Link>
-              <Link href="/projeler">
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                  Projelerimizi Görün
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
+
+        {/* Scroll Indicator - More Prominent & Clickable */}
+        <button
+          onClick={() => {
+            // Navbar yüksekliğini hesaba katarak scroll yap
+            const navbarHeight = window.innerWidth >= 768 ? 128 : 112; // md:h-32 : h-28
+            window.scrollTo({
+              top: window.innerHeight - navbarHeight,
+              behavior: 'smooth'
+            });
+          }}
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10 animate-bounce-slow cursor-pointer hover:scale-110 transition-transform"
+          aria-label="Aşağı kaydır"
+        >
+          <div className="flex flex-col items-center text-primary gap-4">
+            <span className="text-lg md:text-xl font-medium tracking-wider">KEŞFET</span>
+            <div className="w-[2px] h-16 bg-gradient-to-b from-primary to-transparent"></div>
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </button>
       </section>
 
       {/* Hizmetler Özeti */}

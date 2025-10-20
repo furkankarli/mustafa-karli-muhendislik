@@ -69,6 +69,36 @@
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D4AF37;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c29d2e;
+  }
+
+  /* Firefox Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D4AF37 #0a0a0a;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
@@ -92,6 +122,117 @@
       padding-left: 2rem;
       padding-right: 2rem;
       max-width: 1280px;
+    }
+  }
+}
+
+@layer utilities {
+
+  /* Text shadow utilities for better readability on images */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 14px rgba(0, 0, 0, 0.75);
+  }
+
+  /* Fade In Up Animation */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+
+  /* Slide In Left Animation */
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Pulse Slow Animation */
+  @keyframes pulse-slow {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.85;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Bounce Slow Animation */
+  @keyframes bounce-slow {
+
+    0%,
+    100% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+      transform: translateY(-15px);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s infinite;
+  }
+
+  /* Ken Burns zoom-in animation for hero background */
+  @keyframes kenburns-zoom-in {
+    from {
+      transform: scale(1.02);
+    }
+
+    to {
+      transform: scale(1.12);
+    }
+  }
+
+  .animate-kenburns {
+    animation: kenburns-zoom-in 10s ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .animate-kenburns,
+    .animate-slide-in-left,
+    .animate-fade-in-up,
+    .animate-bounce-slow {
+      animation: none !important;
     }
   }
 }

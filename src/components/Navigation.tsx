@@ -35,15 +35,15 @@ export default function Navigation() {
                 }`}
         >
             <div className="container mx-auto px-4">
-                <div className="flex justify-between items-center h-24">
+                <div className="flex justify-between items-center h-28 md:h-32">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                         <Image
                             src="/logo.png"
                             alt="Mustafa Karlı Mühendislik"
-                            width={72}
-                            height={72}
-                            className="h-16 w-auto"
+                            width={120}
+                            height={120}
+                            className="h-24 w-auto md:h-28"
                             priority
                         />
                     </Link>

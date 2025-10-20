@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Building2, Calendar, MapPin } from "lucide-react";
 
 // NOT: Bu sayfa client component olduğu için metadata export edilemez
@@ -73,8 +74,24 @@ export default function Projects() {
     return (
         <div className="min-h-screen bg-black">
             {/* Hero Section */}
-            <section className="relative pt-36 pb-16 md:pt-44 md:pb-24">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-black to-black opacity-50"></div>
+            <section className="relative pt-40 pb-16 md:pt-48 md:pb-24 overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/hero-construction.jpg"
+                        alt="Projeler"
+                        fill
+                        className="object-cover"
+                        quality={85}
+                    />
+                </div>
+
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/70 z-[1]"></div>
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-black/50 to-black/80 z-[2]"></div>
+
                 <div className="container mx-auto px-4 relative z-10">
                     <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">Projelerimiz</h1>
                     <p className="text-xl text-gray-400">
