@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import FloatingActionButtons from "@/components/FloatingActionButtons";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -156,6 +157,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <FloatingActionButtons />
         </TooltipProvider>
       </body>
     </html>

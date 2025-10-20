@@ -161,8 +161,22 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20"></div>
-        <div className="absolute inset-0 bg-black/40"></div>
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero-construction.jpg"
+            alt="İnşaat Projesi"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+        </div>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/60 z-[1]"></div>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 z-[2]"></div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Sizin Projeniz Bizim Önceliğimiz</h2>
