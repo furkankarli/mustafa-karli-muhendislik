@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy only package manifests first for better layer caching
 COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+RUN bun install
 
 
 # 2) Build the Next.js app
