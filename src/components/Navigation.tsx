@@ -7,6 +7,7 @@ import Image from "next/image";
 
 export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -27,7 +28,32 @@ export default function Navigation() {
         { href: "/iletisim", label: "İletişim" },
     ];
 
+    // Lock scroll on mobile menu open
+    useEffect(() => {
+        if (isOpen) {
+            document.documentElement.classList.add("overflow-hidden");
+        } else {
+            document.documentElement.classList.remove("overflow-hidden");
+        }
+        return () => document.documentElement.classList.remove("overflow-hidden");
+    }, [isOpen]);
+
+    const openMenu = () => {
+        setIsClosing(false);
+        setIsOpen(true);
+    };
+
+    const closeMenu = () => {
+        // play closing animation before unmounting
+        setIsClosing(true);
+        setTimeout(() => {
+            setIsOpen(false);
+            setIsClosing(false);
+        }, 220); // keep in sync with CSS durations
+    };
+
     return (
+        <>
         <nav
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
                 ? "bg-black/80 backdrop-blur-md border-b border-primary/20 shadow-2xl"
@@ -63,7 +89,7 @@ export default function Navigation() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        onClick={() => setIsOpen(!isOpen)}
+                        onClick={() => (isOpen ? closeMenu() : openMenu())}
                         className="md:hidden p-2 rounded-md text-gray-300 hover:text-primary hover:bg-primary/10 transition-colors"
                     >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,14 +97,14 @@ export default function Navigation() {
                 </div>
 
                 {/* Mobile Navigation */}
-                {isOpen && (
-                    <div className="md:hidden pb-4 border-t border-primary/20">
+                {(isOpen || isClosing) && (
+                    <div className={`md:hidden pb-4 border-t border-primary/20 ${isClosing ? "animate-dropdown-out" : "animate-dropdown-in"} backface-hidden will-change-transform`}>
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-primary/10 rounded-md transition-colors"
-                                onClick={() => setIsOpen(false)}
+                                onClick={closeMenu}
                             >
                                 {link.label}
                             </Link>
@@ -87,6 +113,15 @@ export default function Navigation() {
                 )}
             </div>
         </nav>
+        {(isOpen || isClosing) && (
+            <button
+                aria-label="Menüyü kapat"
+                onClick={closeMenu}
+                className={`fixed inset-0 z-40 md:hidden bg-black/40 ${isClosing ? "animate-fade-blur-out" : "animate-fade-blur-in"} backface-hidden`}
+                style={{ willChange: 'opacity, backdrop-filter' }}
+            />
+        )}
+        </>
     );
 }
 

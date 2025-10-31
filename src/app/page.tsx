@@ -31,7 +31,7 @@ export default function Home() {
         {/* Gradient Overlay (softer) */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-black/30 to-black/60 z-[2]"></div>
 
-        <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
+        <div className="container mx-auto px-4 relative z-10 h-full flex items-center backface-hidden will-change-transform">
           {/* Slogan - Mobile-first readability */}
           <div className="max-w-4xl animate-slide-in-left opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             <h1
@@ -53,20 +53,23 @@ export default function Home() {
         {/* Scroll Indicator - More Prominent & Clickable */}
         <button
           onClick={() => {
-            // Navbar yüksekliğini hesaba katarak scroll yap
+            // Önce bir sonraki bölümün id'sine kaydırmayı dene
+            const target = document.getElementById('services');
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              return;
+            }
+            // Geriye dönüş: ekran yüksekliği - navbar yüksekliği
             const navbarHeight = window.innerWidth >= 768 ? 128 : 112; // md:h-32 : h-28
-            window.scrollTo({
-              top: window.innerHeight - navbarHeight,
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: window.innerHeight - navbarHeight, behavior: 'smooth' });
           }}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10 animate-bounce-slow cursor-pointer hover:scale-110 transition-transform"
+          className="absolute left-1/2 transform transform-gpu -translate-x-1/2 z-10 animate-bounce-slow cursor-pointer hover:scale-110 transition-transform bottom-40 md:bottom-8 backface-hidden"
           aria-label="Aşağı kaydır"
         >
-          <div className="flex flex-col items-center text-primary gap-4">
-            <span className="text-lg md:text-xl font-medium tracking-wider">KEŞFET</span>
-            <div className="w-[2px] h-16 bg-gradient-to-b from-primary to-transparent"></div>
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+          <div className="flex flex-col items-center text-primary gap-1">
+            <span className="text-base md:text-lg font-medium tracking-wider">KEŞFET</span>
+            <div className="w-[2px] h-5 bg-gradient-to-b from-transparent to-primary"></div>
+            <svg className="w-5 h-5 -mt-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </div>
@@ -74,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* Hizmetler Özeti */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-black via-black to-black/50">
+      <section id="services" className="py-20 md:py-32 bg-gradient-to-b from-black via-black to-black/50 scroll-mt-[112px] md:scroll-mt-[128px]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Neden Bizi Seçmelisiniz?</h2>
